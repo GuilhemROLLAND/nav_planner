@@ -71,6 +71,6 @@ def generate_kml_random_loop_with_start(start_point, distance_km, num_waypoints)
 
 # Exemple d'utilisation
 start_point = (45.53894, 5.31026)  # Coordonnées GPS de départ (à adapter)
-distance_km = 50  # 50 kilomètres (boucle complète)
-num_waypoints = 15  # Nombre de points intermédiaires
+distance_km = 30  # kilomètres (boucle complète)
+num_waypoints = 10  # Nombre de points intermédiaires
 generate_kml_random_loop_with_start(start_point, distance_km, num_waypoints)
