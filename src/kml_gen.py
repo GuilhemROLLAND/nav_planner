@@ -57,14 +57,6 @@ def generate_kml_random_loop_with_start(start_point, distance_km, num_waypoints)
         # Update the new starting point for the next iteration
         prev_point = intermediate_point
     
-    # Add the last line to close the loop
-    kml_file.write('\t\t\t\t<LineString>\n')
-    kml_file.write('\t\t\t\t\t<coordinates>\n')
-    kml_file.write(f'\t\t\t\t\t\t{prev_point[1]},{prev_point[0]},0\n')
-    kml_file.write(f'\t\t\t\t\t\t{start_point[1]},{start_point[0]},0\n')
-    kml_file.write('\t\t\t\t\t</coordinates>\n')
-    kml_file.write('\t\t\t\t</LineString>\n')
-
     kml_file.write('\t\t\t</MultiGeometry>\n')
     kml_file.write('\t\t</Placemark>\n')
 
