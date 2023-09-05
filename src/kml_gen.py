@@ -3,7 +3,7 @@ import math
 
 def generate_kml_random_loop_with_start(start_point, distance_km, num_waypoints):
     # Convertir la distance en degrés de latitude pour une approximation grossière
-    degrees_per_km = 0.00899  # Approximation de la distance en degrés de latitude par kilomètre
+    degrees_per_km = 0.01  # Approximation de la distance en degrés de latitude par kilomètre
     
     # Créer un fichier KML
     kml_file = open("flight_random_loop_with_start.kml", "w", encoding="utf-8")
@@ -40,8 +40,8 @@ def generate_kml_random_loop_with_start(start_point, distance_km, num_waypoints)
         intermediate_point = (prev_point[0] + delta_lat, prev_point[1] + delta_lon)
         
         # Ajouter une variation aléatoire plus importante pour une forme plus aléatoire
-        delta_lat_random = random.uniform(-0.1, 0.1)  # Variation plus importante
-        delta_lon_random = random.uniform(-0.1, 0.1)  # Variation plus importante
+        delta_lat_random = random.uniform(-0.04, 0.04)  # Variation plus importante
+        delta_lon_random = random.uniform(-0.04, 0.04)  # Variation plus importante
         intermediate_point = (intermediate_point[0] + delta_lat_random, intermediate_point[1] + delta_lon_random)
 
         # Ajouter une LineString pour chaque segment
@@ -70,7 +70,7 @@ def generate_kml_random_loop_with_start(start_point, distance_km, num_waypoints)
     kml_file.close()
 
 # Exemple d'utilisation
-start_point = (45.53894, 5.31026)  # Coordonnées GPS de départ (à adapter)
-distance_km = 30  # kilomètres (boucle complète)
-num_waypoints = 10  # Nombre de points intermédiaires
+start_point = (45.43894, 5.51026)  # Coordonnées GPS de départ (à adapter)
+distance_km = 4.5  # kilomètres (boucle complète)
+num_waypoints = 20  # Nombre de points intermédiaires
 generate_kml_random_loop_with_start(start_point, distance_km, num_waypoints)
