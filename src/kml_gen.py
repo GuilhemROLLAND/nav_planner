@@ -2,19 +2,17 @@ import random
 import math
 
 def generate_kml_random_loop_with_start(start_point, distance_km, num_waypoints):
-    # Convertir la distance en degrés de latitude pour une approximation grossière
-    degrees_per_km = 0.01  # Approximation de la distance en degrés de latitude par kilomètre
-    
-    # Créer un fichier KML
+    circunference_km = 40075
+    # Generate the KML file
     kml_file = open("flight_random_loop_with_start.kml", "w", encoding="utf-8")
     kml_file.write('<?xml version="1.0" encoding="UTF-8"?>\n')
     kml_file.write('<kml xmlns="http://earth.google.com/kml/2.0">\n')
     kml_file.write('\t<Document>\n')
 
-    # Ajouter le nom du trajet
-    kml_file.write('\t\t<name>Nav Photos Régul 1</name>\n')
+    # Add name
+    kml_file.write('\t\t<name>Nav Photos Régul</name>\n')
 
-    # Ajouter le style pour la ligne
+    # Add style
     kml_file.write('\t\t<Style id="roadStyle">\n')
     kml_file.write('\t\t\t<LineStyle>\n')
     kml_file.write('\t\t\t\t<color>9F0000FF</color>\n')
@@ -22,39 +20,44 @@ def generate_kml_random_loop_with_start(start_point, distance_km, num_waypoints)
     kml_file.write('\t\t\t</LineStyle>\n')
     kml_file.write('\t\t</Style>\n')
 
-    # Ajouter le point de départ
+    # Add the starting point
     kml_file.write('\t\t<Placemark id="route">\n')
     kml_file.write('\t\t\t<name>Nav Photos Régul 1</name>\n')
     kml_file.write('\t\t\t<styleUrl>#roadStyle</styleUrl>\n')
     kml_file.write('\t\t\t<MultiGeometry>\n')
 
-    prev_point = start_point
+    # Invert latitude and longitude to match x and y format
+    prev_point = [0,0]
+    prev_point[0],prev_point[1] = start_point[1],start_point[0]
 
-    # Calculer les points intermédiaires aléatoires pour former la boucle
+    # Build the loop
     for i in range(num_waypoints):
-        fraction = i / num_waypoints
-        # Calculer la position le long de la boucle en utilisant un cercle
-        angle = fraction * 2 * math.pi
-        delta_lat = degrees_per_km * distance_km * math.sin(angle)
-        delta_lon = degrees_per_km * distance_km * math.cos(angle)
-        intermediate_point = (prev_point[0] + delta_lat, prev_point[1] + delta_lon)
+        # Get the angle depending on the number of waypoints
+        angle = i * 2 * math.pi / num_waypoints 
+        # Compute the x and y distances
+        x_dist = distance_km * math.cos(angle) / circunference_km * num_waypoints
+        y_dist = distance_km * math.sin(angle) / circunference_km * num_waypoints
+        # Compute the perfect intermediate point
+        intermediate_point = (prev_point[0] + x_dist, prev_point[1] + y_dist)
         
-        # Ajouter une variation aléatoire plus importante pour une forme plus aléatoire
-        delta_lat_random = random.uniform(-0.04, 0.04)  # Variation plus importante
-        delta_lon_random = random.uniform(-0.04, 0.04)  # Variation plus importante
-        intermediate_point = (intermediate_point[0] + delta_lat_random, intermediate_point[1] + delta_lon_random)
+        # Get random drift
+        x_drift = random.uniform(-0.001, 0.001)  
+        y_drift = random.uniform(-0.001, 0.001)  
+        # Add the drift to the intermediate point
+        intermediate_point = (intermediate_point[0] + x_drift, intermediate_point[1] + y_drift)
 
-        # Ajouter une LineString pour chaque segment
+        # Add to the KML file
         kml_file.write('\t\t\t\t<LineString>\n')
         kml_file.write('\t\t\t\t\t<coordinates>\n')
-        kml_file.write(f'\t\t\t\t\t\t{prev_point[1]},{prev_point[0]},0\n')
-        kml_file.write(f'\t\t\t\t\t\t{intermediate_point[1]},{intermediate_point[0]},0\n')
+        kml_file.write(f'\t\t\t\t\t\t{prev_point[0]},{prev_point[1]},0\n')
+        kml_file.write(f'\t\t\t\t\t\t{intermediate_point[0]},{intermediate_point[1]},0\n')
         kml_file.write('\t\t\t\t\t</coordinates>\n')
         kml_file.write('\t\t\t\t</LineString>\n')
 
+        # Update the new starting point for the next iteration
         prev_point = intermediate_point
     
-    # Revenir au point de départ pour fermer la boucle
+    # Add the last line to close the loop
     kml_file.write('\t\t\t\t<LineString>\n')
     kml_file.write('\t\t\t\t\t<coordinates>\n')
     kml_file.write(f'\t\t\t\t\t\t{prev_point[1]},{prev_point[0]},0\n')
@@ -71,6 +74,6 @@ def generate_kml_random_loop_with_start(start_point, distance_km, num_waypoints)
 
 # Exemple d'utilisation
 start_point = (45.43894, 5.51026)  # Coordonnées GPS de départ (à adapter)
-distance_km = 4.5  # kilomètres (boucle complète)
+distance_km = 50  # kilomètres (boucle complète)
 num_waypoints = 20  # Nombre de points intermédiaires
 generate_kml_random_loop_with_start(start_point, distance_km, num_waypoints)
