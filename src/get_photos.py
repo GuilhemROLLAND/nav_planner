@@ -23,15 +23,8 @@ def get_image_from_coordinates(latitude, longitude, zoom=16, largeur=1280, haute
 
 
 # Coordonnées GPS (latitude et longitude)
-latitude = 45.502784142511715
-longitude = 5.354623871233328
-
-# Zoom de la carte (valeur recommandée pour une vue satellite)
-zoom = 16
-
-# Taille de l'image en pixels
-largeur = 1280
-hauteur = 960
+latitude = 45.54002
+longitude = 5.38982
 
 # Récupération de l'image
 API_KEY=get_API_key()
