@@ -5,7 +5,7 @@ def get_API_key(file='maps.key'):
     with open(file, 'r') as key_file:
         return key_file.read().strip()
 
-def get_image_from_coordinates(latitude, longitude, zoom=16, largeur=1280, hauteur=960):
+def get_image_from_coordinates(latitude, longitude, zoom=16, largeur=1280, hauteur=960, output_file="image_satellite.png"):
     # URL de l'API Google Maps Static
     url = f"https://maps.googleapis.com/maps/api/staticmap?center={latitude},{longitude}&zoom={zoom}&size={largeur}x{hauteur}&maptype=satellite&key={API_KEY}"
 
@@ -15,9 +15,9 @@ def get_image_from_coordinates(latitude, longitude, zoom=16, largeur=1280, haute
     # Vérification de la réponse
     if response.status_code == 200:
         # Enregistrement de l'image récupérée
-        with open("image_satellite.png", "wb") as f:
+        with open(output_file, "wb") as f:
             f.write(response.content)
-        print("Image satellite enregistrée avec succès sous le nom 'image_satellite.png'")
+        print("Image satellite enregistrée avec succès sous le nom {}".format(output_file))
     else:
         print(f"Erreur lors de la récupération de l'image. Code d'erreur : {response.status_code}")
 
