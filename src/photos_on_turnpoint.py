@@ -30,7 +30,7 @@ def get_photos_on_turnpoint(api_key, kml_filename, output_directory='images'):
                                               latitude, longitude, output_file=output_file)
 
 
-# Exemple d'utilisation de la fonction
 if __name__ == "__main__":
+    # Exemple d'utilisation de la fonction
     get_photos_on_turnpoint(get_photos.get_API_key(),
                             "junction_flight_random_loop.kml")

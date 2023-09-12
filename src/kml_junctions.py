@@ -2,10 +2,12 @@ import xml.etree.ElementTree as ET
 from geopy.distance import geodesic
 from geopy.geocoders import Nominatim
 
+
 def move_points_to_nearest_junction(input_kml, output_kml):
     # Function to find the nearest road junction to a point
     def find_nearest_junction(point, junctions):
-        distances = [(junction, geodesic(point, junction).meters) for junction in junctions]
+        distances = [(junction, geodesic(point, junction).meters)
+                     for junction in junctions]
         distances.sort(key=lambda x: x[1])
         return distances[0][0]
 
@@ -41,5 +43,8 @@ def move_points_to_nearest_junction(input_kml, output_kml):
     # Save the updated KML file
     tree.write(output_kml, encoding='utf-8', xml_declaration=True)
 
-# Example usage:
-move_points_to_nearest_junction('flight_random_loop_with_start.kml', 'junction_flight_random_loop.kml')
+
+if __name__ == "__main__":
+    # Example usage:
+    move_points_to_nearest_junction(
+        'flight_random_loop_with_start.kml', 'junction_flight_random_loop.kml')

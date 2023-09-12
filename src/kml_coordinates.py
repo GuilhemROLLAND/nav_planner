@@ -28,7 +28,6 @@ def extract_coordinates(fichier_kml="junction_flight_random_loop.kml"):
 
 
 if __name__ == "__main__":
-
     # Exemple d'utilisation de la fonction
     coordonnees = extract_coordinates()
 

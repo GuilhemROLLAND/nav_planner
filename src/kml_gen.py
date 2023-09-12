@@ -76,11 +76,13 @@ def generate_kml_random_loop_with_start(start_point, distance_km, start_cap, num
     return kml_file_name
 
 
-# Example
-start_point = (45.533329, 5.33333)  # (latitude, longitude) starting point
-distance_km = 50  # Distance of the loop (in km) (it's better to minimize it)
-num_waypoints = 20  # Number of waypoints
-start_cap = 150  # Cap when you pass the starting point (in degrees)
+if __name__ == "__main__":
+    # Example
+    start_point = (45.533329, 5.33333)  # (latitude, longitude) starting point
+    # Distance of the loop (in km) (it's better to minimize it)
+    distance_km = 50
+    num_waypoints = 20  # Number of waypoints
+    start_cap = 150  # Cap when you pass the starting point (in degrees)
 
-generate_kml_random_loop_with_start(
-    start_point, distance_km, start_cap, num_waypoints)
+    generate_kml_random_loop_with_start(
+        start_point, distance_km, start_cap, num_waypoints)
