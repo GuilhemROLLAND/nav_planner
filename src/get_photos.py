@@ -22,10 +22,11 @@ def get_image_from_coordinates(latitude, longitude, zoom=16, largeur=1280, haute
         print(f"Erreur lors de la récupération de l'image. Code d'erreur : {response.status_code}")
 
 
-# Coordonnées GPS (latitude et longitude)
-latitude = 45.54002
-longitude = 5.38982
+if __name__ == "__main__":
+    # Coordonnées GPS (latitude et longitude)
+    latitude = 45.54002
+    longitude = 5.38982
 
-# Récupération de l'image
-API_KEY=get_API_key()
-get_image_from_coordinates(latitude, longitude)
+    # Récupération de l'image
+    API_KEY=get_API_key()
+    get_image_from_coordinates(latitude, longitude)
