@@ -2,14 +2,15 @@ import random
 import math
 
 
-def generate_kml_random_loop_with_start(start_point, distance_km, num_waypoints, start_cap):
+def generate_kml_random_loop_with_start(start_point, distance_km, start_cap, num_waypoints=20, kml_file_name="flight_random_loop_with_start.kml"):
 
     CIRCUNFERENCE_KM = 40075
+
     # Compute the start angle in radians
     start_angle = (-1) * (start_cap - 90) * 2 * math.pi / 360
 
     # Generate the KML file
-    kml_file = open("flight_random_loop_with_start.kml", "w", encoding="utf-8")
+    kml_file = open(kml_file_name, "w", encoding="utf-8")
     kml_file.write('<?xml version="1.0" encoding="UTF-8"?>\n')
     kml_file.write('<kml xmlns="http://earth.google.com/kml/2.0">\n')
     kml_file.write('\t<Document>\n')
@@ -72,6 +73,7 @@ def generate_kml_random_loop_with_start(start_point, distance_km, num_waypoints,
     kml_file.write('\t</Document>\n')
     kml_file.write('</kml>\n')
     kml_file.close()
+    return kml_file_name
 
 
 # Example
@@ -81,4 +83,4 @@ num_waypoints = 20  # Number of waypoints
 start_cap = 150  # Cap when you pass the starting point (in degrees)
 
 generate_kml_random_loop_with_start(
-    start_point, distance_km, num_waypoints, start_cap)
+    start_point, distance_km, start_cap, num_waypoints)
