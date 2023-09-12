@@ -2,3 +2,5 @@ maps.key
 images/*
 image_satellite.png
 .vscode
+nav_20*
+src/__pycache__
