@@ -10,7 +10,7 @@ import shutil
 def output_nav(kml_file_name):
     folder_name = "nav_{0}".format(datetime.datetime.now().strftime("%Y%m%d_%H%M%S"))
     os.mkdir(folder_name)
-    shutil.copy(kml_file_name, folder_name)
+    shutil.copy("junction_flight_random_loop.kml", folder_name)
     shutil.copy("photos.pdf", folder_name)
     shutil.copy("photo_list.txt", folder_name)
     shutil.copytree("images", folder_name+"/images/")
