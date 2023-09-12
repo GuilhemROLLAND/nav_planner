@@ -5,9 +5,9 @@ def get_API_key(file='maps.key'):
     with open(file, 'r') as key_file:
         return key_file.read().strip()
 
-def get_image_from_coordinates(latitude, longitude, zoom=16, largeur=1280, hauteur=960, output_file="image_satellite.png"):
+def get_image_from_coordinates(api_key, latitude, longitude, zoom=16, largeur=1280, hauteur=960, output_file="image_satellite.png"):
     # URL de l'API Google Maps Static
-    url = f"https://maps.googleapis.com/maps/api/staticmap?center={latitude},{longitude}&zoom={zoom}&size={largeur}x{hauteur}&maptype=satellite&key={API_KEY}"
+    url = f"https://maps.googleapis.com/maps/api/staticmap?center={latitude},{longitude}&zoom={zoom}&size={largeur}x{hauteur}&maptype=satellite&key={api_key}"
 
     # Envoi de la requête HTTP pour récupérer l'image
     response = requests.get(url)
@@ -28,5 +28,5 @@ if __name__ == "__main__":
     longitude = 5.38982
 
     # Récupération de l'image
-    API_KEY=get_API_key()
-    get_image_from_coordinates(latitude, longitude)
+    api_key=get_API_key()
+    get_image_from_coordinates(api_key, latitude, longitude)
