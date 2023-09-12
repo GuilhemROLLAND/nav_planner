@@ -30,7 +30,7 @@ def nav_creator(latitude, longitude, angle, distance=50):
 
     print("Getting photos on turnpoints...")
     photos_on_turnpoint.get_photos_on_turnpoint(
-        get_photos.get_API_key(), kml_file_name)
+        get_photos.get_API_key(), "junction_flight_random_loop.kml")
     print("Photos on turnpoints got")
 
     print("Creating pdf with photos...")
