@@ -41,9 +41,9 @@ def generate_kml_random_loop_with_start(start_point, distance_km, start_cap, num
         # Get the angle depending on the number of waypoints
         angle = start_angle + (i * 2 * math.pi / num_waypoints)
         # Compute the x and y distances
-        x_dist = distance_km * \
+        x_dist =  1.2* distance_km * \
             math.cos(angle) / CIRCUNFERENCE_KM * num_waypoints
-        y_dist = distance_km * \
+        y_dist = .8 * distance_km * \
             math.sin(angle) / CIRCUNFERENCE_KM * num_waypoints
         # Compute the perfect intermediate point
         intermediate_point = (prev_point[0] + x_dist, prev_point[1] + y_dist)
