@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <ns0:kml xmlns:ns0="http://earth.google.com/kml/2.0">
 	<ns0:Document>
-		<ns0:name>Nav Photos Régul</ns0:name>
+		<ns0:name>Nav Photos reguliere</ns0:name>
 		<ns0:Style id="roadStyle">
 			<ns0:LineStyle>
 				<ns0:color>9F0000FF</ns0:color>
@@ -9,89 +9,31 @@
 			</ns0:LineStyle>
 		</ns0:Style>
 		<ns0:Placemark id="route">
-			<ns0:name>Nav Photos Régul 1</ns0:name>
+			<ns0:name>Nav Photos reguliere</ns0:name>
 			<ns0:styleUrl>#roadStyle</ns0:styleUrl>
 			<ns0:MultiGeometry>
 				<ns0:LineString>
-					<ns0:coordinates>5.333042461912554,45.53299695276864,0
-5.293575056018842,45.49789448007734,0</ns0:coordinates>
-				</ns0:LineString>
-				<ns0:LineString>
-					<ns0:coordinates>5.293575056018842,45.49789448007734,0
-5.30773925783458,45.435706813720266,0</ns0:coordinates>
-				</ns0:LineString>
-				<ns0:LineString>
-					<ns0:coordinates>5.30773925783458,45.435706813720266,0
-5.325843,45.441451,0</ns0:coordinates>
-				</ns0:LineString>
-				<ns0:LineString>
-					<ns0:coordinates>5.325843,45.441451,0
-5.386583721532782,45.46752465539767,0</ns0:coordinates>
-				</ns0:LineString>
-				<ns0:LineString>
-					<ns0:coordinates>5.386583721532782,45.46752465539767,0
-5.4163357,45.5010438,0</ns0:coordinates>
-				</ns0:LineString>
-				<ns0:LineString>
-					<ns0:coordinates>5.4163357,45.5010438,0
-5.473063865434036,45.50389461351002,0</ns0:coordinates>
-				</ns0:LineString>
-				<ns0:LineString>
-					<ns0:coordinates>5.473063865434036,45.50389461351002,0
-5.482120482720899,45.49656606552295,0</ns0:coordinates>
-				</ns0:LineString>
-				<ns0:LineString>
-					<ns0:coordinates>5.482120482720899,45.49656606552295,0
-5.488808708884904,45.564555310902676,0</ns0:coordinates>
-				</ns0:LineString>
-				<ns0:LineString>
-					<ns0:coordinates>5.488808708884904,45.564555310902676,0
-5.531213375852082,45.57580865,0</ns0:coordinates>
-				</ns0:LineString>
-				<ns0:LineString>
-					<ns0:coordinates>5.531213375852082,45.57580865,0
-5.5304194182092195,45.58473529021446,0</ns0:coordinates>
-				</ns0:LineString>
-				<ns0:LineString>
-					<ns0:coordinates>5.5304194182092195,45.58473529021446,0
-5.546196607666815,45.65127588910195,0</ns0:coordinates>
-				</ns0:LineString>
-				<ns0:LineString>
-					<ns0:coordinates>5.546196607666815,45.65127588910195,0
-5.5295804,45.6351998,0</ns0:coordinates>
-				</ns0:LineString>
-				<ns0:LineString>
-					<ns0:coordinates>5.5295804,45.6351998,0
-5.471203701553967,45.634372600218526,0</ns0:coordinates>
-				</ns0:LineString>
-				<ns0:LineString>
-					<ns0:coordinates>5.471203701553967,45.634372600218526,0
-5.4131386,45.6376536,0</ns0:coordinates>
-				</ns0:LineString>
-				<ns0:LineString>
-					<ns0:coordinates>5.4131386,45.6376536,0
-5.3863999676872645,45.58700757842005,0</ns0:coordinates>
-				</ns0:LineString>
-				<ns0:LineString>
-					<ns0:coordinates>5.3863999676872645,45.58700757842005,0
-5.3215924,45.5308878,0</ns0:coordinates>
-				</ns0:LineString>
-				<ns0:LineString>
-					<ns0:coordinates>5.3215924,45.5308878,0
-5.260218371209924,45.50819460876747,0</ns0:coordinates>
-				</ns0:LineString>
-				<ns0:LineString>
-					<ns0:coordinates>5.260218371209924,45.50819460876747,0
-5.269525089615462,45.48834715004499,0</ns0:coordinates>
-				</ns0:LineString>
-				<ns0:LineString>
-					<ns0:coordinates>5.269525089615462,45.48834715004499,0
-5.2246075,45.4664406,0</ns0:coordinates>
-				</ns0:LineString>
-				<ns0:LineString>
 					<ns0:coordinates>
-						5.224510113218304,45.466886278761294,0
-						5.191945407141527,45.40340715842574,0
+					5.366623171291106,45.53363123761773,0
+					5.399276646654931,45.514910001222916,0
+					5.440599328787016,45.48810943774633,0
+					5.479092,45.471313,0
+					5.510512579523187,45.4761504751815,0
+					5.5207317,45.4884595,0
+					5.5273646082827685,45.515975552096776,0
+					5.519165,45.527273,0
+					5.5203506,45.5529395,0
+					5.492664,45.554529,0
+					5.4840163,45.5523395,0
+					5.472312576684881,45.5710541,0
+					5.455297120295753,45.5604265,0
+					5.440322429661787,45.58005653103755,0
+					5.424761474863244,45.5785077342606,0
+					5.4198082,45.5778203,0
+					5.3993037,45.5566928,0
+					5.398471117272007,45.54965163276022,0
+					5.376719773346823,45.535965669060126,0
+					5.3991134,45.4999451,0
 					</ns0:coordinates>
 				</ns0:LineString>
 			</ns0:MultiGeometry>

@@ -4,7 +4,7 @@ import math
 
 def generate_kml_random_loop_with_start(start_point, distance_km, start_cap, num_waypoints=20, kml_file_name="flight_random_loop_with_start.kml"):
 
-    CIRCUNFERENCE_KM = 40075
+    CIRCUMFERENCE_KM = 40075
 
     # Compute the start angle in radians
     start_angle = (-1) * (start_cap - 90) * 2 * math.pi / 360
@@ -16,7 +16,7 @@ def generate_kml_random_loop_with_start(start_point, distance_km, start_cap, num
     kml_file.write('\t<Document>\n')
 
     # Add name
-    kml_file.write('\t\t<name>Nav Photos Régul</name>\n')
+    kml_file.write('\t\t<name>Nav Photos</name>\n')
 
     # Add style
     kml_file.write('\t\t<Style id="roadStyle">\n')
@@ -28,9 +28,11 @@ def generate_kml_random_loop_with_start(start_point, distance_km, start_cap, num
 
     # Add the starting point
     kml_file.write('\t\t<Placemark id="route">\n')
-    kml_file.write('\t\t\t<name>Nav Photos Régul 1</name>\n')
+    kml_file.write('\t\t\t<name>Nav Photos</name>\n')
     kml_file.write('\t\t\t<styleUrl>#roadStyle</styleUrl>\n')
     kml_file.write('\t\t\t<MultiGeometry>\n')
+    kml_file.write('\t\t\t\t<LineString>\n')
+    kml_file.write('\t\t\t\t\t<coordinates>\n')
 
     # Invert latitude and longitude to match x and y format
     prev_point = [0, 0]
@@ -42,9 +44,9 @@ def generate_kml_random_loop_with_start(start_point, distance_km, start_cap, num
         angle = start_angle + (i * 2 * math.pi / num_waypoints)
         # Compute the x and y distances
         x_dist =  1.2* distance_km * \
-            math.cos(angle) / CIRCUNFERENCE_KM * num_waypoints
+            math.cos(angle) / CIRCUMFERENCE_KM * num_waypoints
         y_dist = .8 * distance_km * \
-            math.sin(angle) / CIRCUNFERENCE_KM * num_waypoints
+            math.sin(angle) / CIRCUMFERENCE_KM * num_waypoints
         # Compute the perfect intermediate point
         intermediate_point = (prev_point[0] + x_dist, prev_point[1] + y_dist)
 
@@ -56,17 +58,14 @@ def generate_kml_random_loop_with_start(start_point, distance_km, start_cap, num
             intermediate_point[0] + x_drift, intermediate_point[1] + y_drift)
 
         # Add to the KML file
-        kml_file.write('\t\t\t\t<LineString>\n')
-        kml_file.write('\t\t\t\t\t<coordinates>\n')
-        kml_file.write(f'\t\t\t\t\t\t{prev_point[0]},{prev_point[1]},0\n')
         kml_file.write(
             f'\t\t\t\t\t\t{intermediate_point[0]},{intermediate_point[1]},0\n')
-        kml_file.write('\t\t\t\t\t</coordinates>\n')
-        kml_file.write('\t\t\t\t</LineString>\n')
 
         # Update the new starting point for the next iteration
         prev_point = intermediate_point
 
+    kml_file.write('\t\t\t\t\t</coordinates>\n')
+    kml_file.write('\t\t\t\t</LineString>\n')
     kml_file.write('\t\t\t</MultiGeometry>\n')
     kml_file.write('\t\t</Placemark>\n')
 
