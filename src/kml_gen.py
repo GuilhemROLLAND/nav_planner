@@ -16,7 +16,7 @@ def generate_kml_random_loop_with_start(start_point, distance_km, start_cap, num
     kml_file.write('\t<Document>\n')
 
     # Add name
-    kml_file.write('\t\t<name>Nav Photos reguliere</name>\n')
+    kml_file.write('\t\t<name>Nav Photos</name>\n')
 
     # Add style
     kml_file.write('\t\t<Style id="roadStyle">\n')
@@ -28,7 +28,7 @@ def generate_kml_random_loop_with_start(start_point, distance_km, start_cap, num
 
     # Add the starting point
     kml_file.write('\t\t<Placemark id="route">\n')
-    kml_file.write('\t\t\t<name>Nav Photos reguliere</name>\n')
+    kml_file.write('\t\t\t<name>Nav Photos</name>\n')
     kml_file.write('\t\t\t<styleUrl>#roadStyle</styleUrl>\n')
     kml_file.write('\t\t\t<MultiGeometry>\n')
     kml_file.write('\t\t\t\t<LineString>\n')
