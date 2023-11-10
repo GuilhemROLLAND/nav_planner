@@ -40,9 +40,9 @@ def move_points_to_nearest_junction(input_kml, output_kml):
         new_points.append(nearest_junction)
 
     # Update the coordinates in the KML file
-    coordinates_element.text = "\n"
+    coordinates_element.text = "\n\t\t\t\t\t"
     for point in new_points:
-        coordinates_element.text += f"{point[1]},{point[0]},0\n"
+        coordinates_element.text += f"{point[1]},{point[0]},0\n\t\t\t\t\t"
 
     # Save the updated KML file
     tree.write(output_kml, encoding='utf-8', xml_declaration=True)
