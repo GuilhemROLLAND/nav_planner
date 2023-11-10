@@ -19,6 +19,8 @@ def output_nav(kml_file_name):
 def nav_creator(latitude, longitude, angle, distance=50):
     print("Creating nav with parameters: lat={0}, long={1}, angle={2}, distance={3}".format(latitude, longitude, angle, distance))
 
+    kml_file_name = "flight_random_loop_with_start.kml" # Default name
+    
     print("Generating kml file...")
     kml_file_name = kml_gen.generate_kml_random_loop_with_start(
         (latitude, longitude), distance, angle)
