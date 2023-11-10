@@ -17,10 +17,13 @@ def move_points_to_nearest_junction(input_kml, output_kml):
 
     # Extract coordinates of the points
     points = []
-    for coordinates_elem in root.findall('.//{http://earth.google.com/kml/2.0}coordinates'):
-        coordinates = coordinates_elem.text.strip().split(',')
-        lat, lon = float(coordinates[1]), float(coordinates[0])
-        points.append((lat, lon))
+    coordinates_element = root.find(
+        ".//{http://earth.google.com/kml/2.0}coordinates")
+    if coordinates_element is not None:
+        coordinates_text = coordinates_element.text.strip()
+        coordinates_list = [tuple(sorted((map(float, point.split(
+            ','))), reverse=True)) for point in coordinates_text.split()]
+        points.extend(coordinates_list)
 
     # Extract coordinates of road junctions (you can use a service like Nominatim to obtain them)
     geolocator = Nominatim(user_agent="my_geocoder")
@@ -37,8 +40,9 @@ def move_points_to_nearest_junction(input_kml, output_kml):
         new_points.append(nearest_junction)
 
     # Update the coordinates in the KML file
-    for coordinates_elem, start, end in zip(root.findall('.//{http://earth.google.com/kml/2.0}coordinates'), new_points, new_points[1:]):
-        coordinates_elem.text = f"{start[1]},{start[0]},0\n{end[1]},{end[0]},0"
+    coordinates_element.text = "\n"
+    for point in new_points:
+        coordinates_element.text += f"{point[1]},{point[0]},0\n"
 
     # Save the updated KML file
     tree.write(output_kml, encoding='utf-8', xml_declaration=True)
