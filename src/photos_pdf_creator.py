@@ -3,11 +3,16 @@ import random
 from PIL import Image
 from reportlab.pdfgen import canvas
 from reportlab.lib import utils
+import improve_images
 
 
 def create_pdf_with_images(image_folder="images/", num_images=12, pdf_filename="photos.pdf", text_filename="photo_list.txt"):
     # Liste des fichiers d'images dans le dossier
     files = os.listdir(image_folder)
+
+    # Augmente la luminosité pour impression
+    for file in files:
+        improve_images.increase_brightness(os.path.join(image_folder, file))
 
     # Sélectionne le nombre spécifié de fichiers d'images au hasard sans doublon
     selected_files = random.sample(files, num_images)
@@ -23,7 +28,7 @@ def create_pdf_with_images(image_folder="images/", num_images=12, pdf_filename="
             file.write(filename + "\n")
 
             # Ouvre l'image et redimensionne-la si nécessaire
-            image = Image.open(os.path.join(image_folder, filename))
+            image = Image.open(os.path.join("bright_images/", filename))
             if image.width > 290 or image.height > 290:
                 image.thumbnail((290, 290))
 
