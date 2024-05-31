@@ -37,7 +37,7 @@ def create_pdf_with_images(image_folder="images/", num_images=12, pdf_filename="
             y = ((i % 6) // 2) * 300 + 5
 
             # Convertit l'image PIL en objet ReportLab
-            img_data = utils.ImageReader(os.path.join(image_folder, filename))
+            img_data = utils.ImageReader(os.path.join("bright_images/", filename))
             pdf.drawImage(img_data, x, y, width=image.width,
                           height=image.height)
 
