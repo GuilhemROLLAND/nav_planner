@@ -23,7 +23,7 @@ def nav_creator(latitude, longitude, angle, distance=50):
     
     print("Generating kml file...")
     kml_file_name = kml_gen.generate_kml_random_loop_with_start(
-        (latitude, longitude), distance, angle)
+        (latitude, longitude), distance, angle, 30)
     print("Kml file generated: {0}".format(kml_file_name))
 
     print("Moving points to nearest junction...")
@@ -45,4 +45,4 @@ def nav_creator(latitude, longitude, angle, distance=50):
 
 
 if __name__ == "__main__":
-    nav_creator(45.533329, 5.33333, 150, 50)
+    nav_creator(45.557, 5.386, 150, 50)
